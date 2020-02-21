@@ -13,11 +13,15 @@ public class MongoManager {
 
     public MongoManager(String host, Integer port, String dataBase) {
         this.mongoClient = new MongoClient(host, port);
-        this.db = getDatabase(dataBase);
+        this.db = getDataBase(dataBase);
     }
 
-    public MongoDatabase getDatabase(String database) {
+    private MongoDatabase getDataBase(String database) {
         return mongoClient.getDatabase(database);
+    }
+
+    public MongoDatabase getDataBase() {
+        return this.db;
     }
 
     public MongoCollection<Document> getCollection(String collection) {
